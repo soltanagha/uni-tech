@@ -1,0 +1,39 @@
+server:
+  port: 8668
+  error:
+    include-message: always
+    include-binding-errors: always
+
+
+spring:
+  application:
+    name: uni-tech
+  datasource:
+    url: jdbc:h2:file:./src/main/resources/unitech_db;AUTO_SERVER=true
+    username: root
+    password: 12345
+    driver-class-name: org.h2.Driver
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+
+application:
+  security:
+    jwt:
+      secret-key: 74534E635266556B7756E3272357538734F413F4628472B4B6250645877666B5970
+      expiration: 86400000 # a day
+      refresh-token:
+        expiration: 604800000 # 7 days
+
+caching:
+  spring:
+    currencyRateTTL: 43200
